@@ -1,0 +1,17 @@
+# Azure Developer CLI (azd) configuration template
+# TenderPilot AI: Autonomous Business Development Employee
+
+name: tenderpilot-ai-workforce
+metadata:
+  template: tenderpilot-ai-azd-python-spa
+services:
+  backend:
+    project: ./backend
+    language: python
+    host: containerapp
+  frontend:
+    project: ./frontend
+    language: js
+    host: staticwebapp
+pipeline:
+  provider: github

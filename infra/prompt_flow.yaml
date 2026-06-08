@@ -1,0 +1,52 @@
+# Azure AI Foundry - Prompt Flow Definition
+# Workspace: TenderPilot AI Operations Hub
+# Primary Flow: Proposal Content Extraction & Citation Auditing
+
+inputs:
+  tender_specification:
+    type: string
+    default: "CPPP/AI-ANALYSIS/2026/089 Smart City Analytics Portal Specifications..."
+  proposal_draft:
+    type: object
+    default:
+      executive_summary: "TenderCorp Technologies is pleased to submit this proposal..."
+      readiness: 90.0
+
+outputs:
+  grounding_score:
+    type: string
+    reference: ${audit_citations.output}
+  eligibility_match:
+    type: string
+    reference: ${verify_criteria.output}
+
+nodes:
+- name: extract_tender_clauses
+  type: python
+  source:
+    type: code
+    path: extract_tender_clauses.py
+  inputs:
+    raw_text: ${inputs.tender_specification}
+
+- name: verify_criteria
+  type: llm
+  source:
+    type: code
+    path: eligibility_criteria_prompt.txt
+  inputs:
+    deployment_name: gpt-4o-deployment
+    temperature: 0.0
+    extracted_clauses: ${extract_tender_clauses.output}
+    response_format: { "type": "json_object" }
+
+- name: audit_citations
+  type: llm
+  source:
+    type: code
+    path: citation_validation_prompt.txt
+  inputs:
+    deployment_name: gpt-4o-deployment
+    temperature: 0.1
+    tender_clauses: ${extract_tender_clauses.output}
+    proposal_draft: ${inputs.proposal_draft}
