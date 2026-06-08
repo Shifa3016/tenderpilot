@@ -1,6 +1,6 @@
 // TENDERPILOT AI - FRONTEND APPLICATION SCRIPT
 
-const BACKEND_URL = "http://localhost:8000/api";
+const BACKEND_URL = "https://tenderpilot-backend.onrender.com";
 let useLocalSimFallback = true;
 let currentDemoStep = 0;
 let demoInterval = null;
