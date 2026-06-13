@@ -1,33 +1,74 @@
-# TenderPilot AI - 3-Minute Demo Video Script & Narrative
+# TenderPilot AI - Video Recording Guide & Demo Script
 
-This document details the video storyboard, voiceover lines, and judges walkthrough instructions for the TenderPilot AI hackathon submission.
-
----
-
-## 3-Minute Video Storyboard
-
-| Timestamp | Visual Layout | Spoken Voiceover |
-| :--- | :--- | :--- |
-| **0:00 - 0:25** | Host appears. Screenshare showing the **Executive Dashboard**. The dashboard has clean glassmorphic panels and a glowing radial **Autonomy Score™** progress bar reading 91%. | "Every day, thousands of government tenders are published across fragmented portals. Startups and MSMEs miss these opportunities because tracking them, evaluating eligibility, and preparing proposals is a manual bottleneck. Meet TenderPilot AI—an autonomous AI Business Development Employee that finds, evaluates, and prepares bids autonomously." |
-| **0:25 - 1:10** | Zoom in on the **Agent Workforce** panel. The user clicks **'Simulate Portal Crawl'**. The live SVG **Agent Collaboration Graph** lights up. Green links start pulsing between the Supervisor, Discovery, and Eligibility nodes. Terminal logs stream in real-time. | "Let's trigger a portal crawl. The Discovery Agent navigates CPPP, downloading a new Smart City dashboard tender. The **Eligibility Agent** parses the specifications PDF against our company credentials. It calculates three key metrics: a 92% Match Score, an 88% Eligibility Score, and a 76% Win Probability." |
-| **1:10 - 1:50** | The collaboration graph pulses toward the **Research Agent**, then the **Competitor Intelligence**, **Planner**, and **Generator** nodes. The timeline prints details about RAG matches, previous winners (AlphaTech Systems), and technical draft chapters. | "Next, the **Research Agent** queries Azure AI Search for past bids. The **Competitor Intelligence Agent** analyzes past winner patterns, identifying AlphaTech Systems as the primary rival and recommending a strategic bid price of INR 41 Lakhs. The **Planner** designs a task checklist, and the **Generator Agent** drafts proposal chapters." |
-| **1:50 - 2:30** | Switch to the **Governance Approvals** page. An approval card is displayed. The host inspects the staged Outlook email draft and the four Microsoft Planner cards. Host types feedback: "Approved for deployment" and clicks **'Approve & Execute'**. | "TenderPilot AI keeps humans in control. Staged tasks and proposals are held at this **Human-in-the-Loop Governance Checkpoint**. Here, we can review the drafts and pricing. Clicking approve triggers the Supervisor agent to dispatch the tasks and emails using the Microsoft Graph API." |
-| **2:30 - 3:00** | Switch back to the Executive Dashboard. Show the Autonomy Score updating to 92%. Show the new row added to the **Tenders Feed** table. Open the **Tender Copilot** chat, ask a suggested query, and show the instant response. | "On completion, the system updates our persistent Gremlin Knowledge Graph in Cosmos DB, and the dashboard metrics refresh. We can query our database using the **Tender Copilot**. Businesses no longer need to waste hours hunting for tenders. TenderPilot AI does the work for you." |
+Use this script as your step-by-step recording guide. It is designed to fit under the **3-minute limit** and is optimized for the **Demo Video** hackathon requirements.
 
 ---
 
-## Judges Presentation Narrative
+## 🎬 Video Recording Blueprint
 
-### The Core Theme: Agentic Web
-TenderPilot AI demonstrates the "Agentic Web" by giving AI agents web autonomy. Rather than relying on static APIs, our workforce uses Playwright browser agents to traverse portals, authenticate, extract updates, map dependencies, and write actions directly back into Microsoft SaaS networks.
+### Section 1: Intro & The Problem (0:00 - 0:30)
+*   **What to show on Screen (Visual)**:
+    1. Open `frontend/index.html` in your browser.
+    2. Start on the **Executive Dashboard** tab.
+    3. Hover your cursor over the **Opportunity Radar** boxes and the **Autonomy Score** circle.
+*   **Voiceover (What to Say)**:
+    > "Hi everyone, welcome to TenderPilot AI, our project for the Microsoft Build AI Hackathon 2026. 
+    > Businesses and startups lose thousands of dollars in opportunities simply because government tenders are scattered across fragmented portals. Finding bids, reading complex 100-page specification documents, and preparing proposals is a completely manual bottleneck. 
+    > That is why we built TenderPilot AI—an autonomous team of AI agents that operates like a virtual business development assistant to find, evaluate, and draft proposals for government tenders."
 
-### Walkthrough Steps for Evaluators
-To follow the simulation on the live frontend:
-1. Navigate to the **Autonomous Workforce** tab to inspect the interactive collaboration graph.
-2. Click the **'Simulate Portal Crawl (CPPP)'** button in the header.
-3. Watch the SVG graph highlight the active agent node in real-time, accompanied by live console logs in the timeline.
-4. Go to the **Human Approvals** tab once the Reflection Agent validation completes.
-5. Review the staged email copy and the 4 Microsoft Planner tasks.
-6. Provide custom feedback in the input box and click **'Approve & Execute'**.
-7. Return to the **Executive Dashboard** to verify that the metrics, autonomy score, and feed tables have updated dynamically.
-8. Ask custom questions (e.g., *"Show all high-risk regulatory updates this month."*) in the **Executive Copilot** chat interface.
+---
+
+### Section 2: Launching the Crawl (0:30 - 1:15)
+*   **What to show on Screen (Visual)**:
+    1. Click the **"Simulate Portal Crawl (CPPP)"** button in the top right.
+    2. Immediately switch to the **Agent Workforce** tab.
+    3. Watch the SVG node graph activate. The links between nodes will light up green, and the agent inspector cards below will change status.
+    4. Scroll down the **Real-time Agent Timeline** as console logs start printing out.
+*   **Voiceover (What to Say)**:
+    > "Let's start the crawl. We search for 'AI and software development tenders under 50 Lakhs'. 
+    > Immediately, our **Supervisor Agent** coordinates the workflow. The **Discovery Agent** uses Playwright to navigate the CPPP portal and download the tender specifications. 
+    > Next, the **Eligibility Agent** parses the text, matches it against our profile, and calculates three key metrics: our eligibility criteria fit, our Tender Match Score which stands at 92%, and our estimated Win Probability."
+
+---
+
+### Section 3: RAG, Competitors & Drafting (1:15 - 2:00)
+*   **What to show on Screen (Visual)**:
+    1. Stay on the **Agent Workforce** tab.
+    2. Watch the SVG highlight links move from the Eligibility node (EA) to the Research (RA), Competitor (CI), Planner (PA), and Generator (GA) nodes.
+    3. Focus on the timeline log showing the RAG search results and previous winner insights.
+*   **Voiceover (What to Say)**:
+    > "Next, the **Research Agent** queries our historical files using Azure AI Search to find similar past proposals. 
+    > The **Competitor Intelligence Agent** searches past award databases—identifying our competitor AlphaTech Systems, and recommending a strategic bid price of 41 Lakhs. 
+    > The **Planner Agent** immediately structures a 4-step checklist, and the **Generator Agent** drafts the technical bid chapters, bringing our proposal readiness to 90%."
+
+---
+
+### Section 4: Human-in-the-Loop Approval Gate (2:00 - 2:30)
+*   **What to show on Screen (Visual)**:
+    1. Switch to the **Human Approvals** tab.
+    2. Hover over the staged Outlook email draft and the staged Microsoft Planner task cards.
+    3. Click on the text box, type: `"Bid price approved at 41 Lakhs."`
+    4. Click the green **"Approve & Execute"** button.
+*   **Voiceover (What to Say)**:
+    > "For security and governance, TenderPilot uses a strict Human-in-the-Loop gate. Before any task is sent to Microsoft Planner or emails are sent via Outlook, the drafts are held here for review. 
+    > We can review the pricing, leave feedback, and click 'Approve & Execute'. The Supervisor agent then publishes the tasks to our team boards using the Microsoft Graph API."
+
+---
+
+### Section 5: Conclusion & Tender Copilot (2:30 - 3:00)
+*   **What to show on Screen (Visual)**:
+    1. Switch to the **Tender Copilot** tab.
+    2. Click the suggested query button: `"What documents are missing from the checklist?"`
+    3. Wait 1 second for the chat bubble reply to write out, then hover over the reply.
+    4. Switch back to the **Executive Dashboard** to show the updated Autonomy Score and new row in the tenders feed.
+*   **Voiceover (What to Say)**:
+    > "The system updates our Gremlin Knowledge Graph memory in Cosmos DB, and the dashboard updates. 
+    > We can also chat with our **Tender Copilot** using natural language to explain our bidding strategy, check for missing compliance documents, or audit deadlines. 
+    > TenderPilot AI turns manual procurement into a smart, autonomous experience. Thank you for watching!"
+
+---
+
+## 💡 Visual Recording Tips for a High Score:
+1.  **Run locally or in Sandbox**: The sandbox simulator runs locally with 100% reliability, ensuring no network lags, server errors, or CAPTCHA popups disrupt your recording.
+2.  **Resolution**: Make sure to record in at least **1080p** so the terminal logs and dashboard texts are sharp and readable.
+3.  **No Slideshows**: The hackathon judges explicitly request a "walkthrough of the working prototype, not a slideshow". Keep your video focused entirely on the live dashboard screen.
