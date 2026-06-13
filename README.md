@@ -6,86 +6,116 @@
 
 ---
 
-## 🌟 Core Vision & Wow Factor
+## 📖 Project Description
 
-TenderPilot AI is an **Autonomous AI Business Development Employee** designed to eliminate the manual bottleneck of searching public tender portals (CPPP, GeM, NHAI), assessing eligibility, compiling checklists, researching competitors, and drafting proposals. 
+TenderPilot AI is an **Autonomous AI Business Development Employee** designed to solve a critical business bottleneck: the highly manual, fragmented, and time-consuming process of government tender discovery and proposal preparation. 
 
-Orchestrated by Semantic Kernel, the platform coordinates **8 specialized AI agents** to discover tenders, calculate fit scores, research historical awards, evaluate rival bid patterns, draft bid chapters, and stage Microsoft Office tasks—while keeping humans in control through secure governance approval checkpoints.
+Startups, MSMEs, and enterprises lose millions of dollars in potential revenue simply because:
+1. Monitoring dozens of public procurement portals daily is logistically impossible.
+2. Evaluating complex, 100-page tender specification documents for eligibility criteria is slow.
+3. Draft proposals require specialized expertise and significant time to write.
 
----
-
-## 🛠️ Complete Microsoft Tech Stack Integration
-
-TenderPilot AI is built from the ground up for the Microsoft ecosystem:
-* **Azure OpenAI (GPT-4o)**: Powers agent reasoning, eligibility audits, and proposal drafting.
-* **Semantic Kernel**: The multi-agent orchestrator managing planning, memory context, and tool calling.
-* **Azure AI Search (RAG)**: Connects agents to internal proposal databases and historical bids.
-* **Azure Cosmos DB**: Stores short-term session memory (NoSQL) and long-term organizational relations (Gremlin Graph API).
-* **Microsoft Graph API**: Connects the Execution Agent to Outlook (Exchange) and Microsoft Planner.
-* **Azure AI Foundry (Prompt Flow)**: Manages and evaluates LLM prompt templates for coherence, grounding, and validation.
-* **Azure Container Apps & Functions**: Hosts backend FastAPI services and scheduled scraper runtimes.
-* **Azure Monitor & App Insights**: Provides end-to-end telemetry and tokens trace tracking for agent actions.
+TenderPilot AI automates this end-to-end process. The user enters a natural language prompt (e.g., *"Find AI and Software Development tenders under ₹50 lakh"*), and a team of **8 specialized agents** autonomously crawls portals, parses documents, checks eligibility constraints, evaluates competitor win patterns, generates compliance task roadmaps, and drafts complete bid responses. High-risk actions are held at a secure **Human-in-the-Loop Governance Checkpoint** before any emails are drafted or task checklist items are dispatched to corporate networks.
 
 ---
 
-## 📂 Repository Structure
+## 🏗️ Architecture Overview
 
-```
-├── backend/
-│   ├── api/routes.py          # REST controllers & Tender Copilot API
-│   ├── agents/                # Supervisor, Discovery, Eligibility, Research, Competitor, Planner, Generator, Execution, Reflection
-│   ├── workflows/             # 13-step state orchestrator
-│   ├── memory/                # Cosmos NoSQL & Knowledge Graph connectors
-│   ├── rag/search_service.py  # Azure AI Search RAG wrapper
-│   ├── plugins/               # Playwright browser & MS Graph SDK wrappers
-│   ├── models/data_models.py  # Pydantic schemas for db collections
-│   ├── tests/test_tenders.py  # Pytest automated testing suite
-│   ├── main.py                # FastAPI entrypoint
-│   └── requirements.txt       # Dependencies
-├── frontend/
-│   ├── index.html             # futuristic glassmorphism layout
-│   ├── style.css              # Custom keyframe animations, grid layouts
-│   └── app.js                 # SVG Collaboration Graph & 13-step demo flow
-├── infra/
-│   ├── main.bicep             # Azure Resource deployments Bicep templates
-│   ├── prompt_flow.yaml       # Prompt Flow definitions for Azure AI Foundry
-│   └── azure.yaml             # Azure Developer CLI deploy descriptors
-├── docs/
-│   ├── pitch_deck.md          # 10-slide Presentation Outline
-│   ├── demo_script.md         # Video Script & Walkthrough
-│   ├── competitive_analysis.md# Market positioning comparisons
-│   ├── monetization.md        # SaaS pricing structures
-│   └── roadmap.md             # Development roadmap
-└── README.md                  # This file
+The platform uses an event-driven, multi-agent sequence orchestrated by Microsoft's Semantic Kernel. Below is the system flow and communication topology:
+
+```mermaid
+graph TD
+    User([User Query]) --> |1. Start| SV[Supervisor Agent]
+    SV <--> |Coordinate Flow| DA[Discovery Agent]
+    SV <--> |Coordinate Flow| EA[Eligibility Agent]
+    SV <--> |Coordinate Flow| RA[Research Agent]
+    SV <--> |Coordinate Flow| CI[Competitor Intel Agent]
+    SV <--> |Coordinate Flow| PA[Proposal Planner Agent]
+    SV <--> |Coordinate Flow| GA[Proposal Generator Agent]
+    SV <--> |Coordinate Flow| EX[Execution Agent]
+    SV <--> |Coordinate Flow| FA[Reflection Agent]
+
+    DA --> |Playwright Scraper| Web[(GeM / CPPP Portals)]
+    EA --> |Calculate Fit Metrics| ME[Tender Match Engine™]
+    RA --> |Vector/Semantic RAG| AIS[Azure AI Search]
+    CI --> |Competitor Database| Gremlin[(Cosmos Gremlin Graph)]
+    EX --> |Staged API Actions| Graph[Microsoft Graph API]
+    FA --> |Citations & Safety Audit| SV
+    
+    subgraph Human Gate [Governance Layer]
+        Checkpoint{Human Approval Checkpoint}
+    end
+    
+    EX -.-> Checkpoint
+    Checkpoint --> |Approve / Modify| Graph
 ```
 
 ---
 
-## 🚀 Quick Start & Running Locally
+## 🛠️ AI Tools & Microsoft Stack Integration
 
-### 1. Zero-Install Frontend Demo (Fastest Way to Judge)
-To run the high-fidelity demonstration without setting up Python dependencies:
+TenderPilot AI is built natively on the **Microsoft AI Cloud Ecosystem**:
+* **Azure OpenAI (GPT-4o)**: Powering reasoning, eligibility validation, and proposal drafting across all agents.
+* **Semantic Kernel**: The multi-agent orchestrator managing step planning, conversation histories, and tool-calling execution.
+* **Azure AI Search (RAG)**: Indexing past bid proposals, case studies, and corporate credentials to ground model outputs in factual, historical records.
+* **Azure Cosmos DB**: 
+  * *NoSQL API*: Stores active workflow states, prompt traces, and session timelines.
+  * *Apache Gremlin (Graph API)*: Maps the corporate knowledge graph linking tenders, requirements, rivals, and task roles.
+* **Azure AI Foundry (Prompt Flow)**: Visually orchestrates and tests prompt templates, scoring LLM outputs for grounding and relevance.
+* **Microsoft Graph API**: Links the workflow to Office 365 services (drafting Outlook emails and creating Planner task cards).
+* **Azure Container Apps**: Hosting the FastAPI Python backend as scalable, decoupled container runtimes.
+
+---
+
+## 📦 Dependencies
+
+The application relies on the following core Python libraries (specified in `backend/requirements.txt`):
+* `fastapi` & `uvicorn`: High-performance backend API serving.
+* `pydantic`: Strict data validation schemas for Cosmos and REST models.
+* `semantic-kernel`: Microsoft's SDK for orchestrating agents and plugins.
+* `playwright`: Headless browser engine for scraping public portals.
+* `azure-cosmos`: Integration client for database persistence.
+* `azure-search-documents`: Client for vector/keyword search indexes.
+* `azure-identity`: Secure Microsoft Entra ID authentication.
+* `pytest`: Test runner for automated pipelines.
+
+---
+
+## 🚀 Setup & Execution Instructions
+
+The project features a **Zero-Install Local Sandbox Mode** designed specifically for judges to evaluate the platform instantly.
+
+### 1. Run the Frontend Dashboard (Sandbox Mode - Direct Browser)
 1. Open the [frontend/index.html](file:///e:/Projects/Microsoft%20Build%20AI/frontend/index.html) file directly in any modern web browser.
-2. The UI will detect that the backend is offline and launch its **Local Sandbox Simulator**.
-3. Click the **"Simulate Portal Crawl (CPPP)"** button in the header and watch the SVG Agent Collaboration Graph animate live!
-4. Navigate to the **Human Approvals** tab to review staged outputs and submit governance feedback.
+2. The UI will detect that the backend server is offline and automatically launch its **Local Sandbox Simulator**.
+3. Click the **"Simulate Portal Crawl (CPPP)"** button in the header to watch the SVG Agent Collaboration Graph animate live!
+4. Navigate to the **Human Approvals** tab to review staged outputs and submit approval decisions.
+5. Query the procurement engine in the **Tender Pilot** chat assistant tab.
 
-### 2. Full Local Development (FastAPI Backend)
-To launch the backend API service:
-1. Ensure Python 3.10+ is installed.
-2. Clone the repository and navigate to the directory.
-3. Install dependencies:
+### 2. Run the Full Local Backend (FastAPI Server)
+To start the live backend and connect the frontend to it:
+1. Make sure Python 3.10+ is installed.
+2. In your terminal, navigate to the project directory and install the python dependencies:
    ```bash
    pip install -r backend/requirements.txt
    ```
-4. Start the FastAPI server:
+3. Run the FastAPI server:
    ```bash
    python backend/main.py
    ```
-5. The backend will start on `http://localhost:8000`. Re-opening or refreshing the `index.html` dashboard will automatically transition it from Sandbox Mode to Live API Mode.
+4. The server runs at `http://localhost:8000`. Reloading `frontend/index.html` in your browser will automatically shift it to **Live API Mode**.
 
-### 3. Running Automated Tests
-To execute agent lifecycle tests:
+### 3. Run Automated Unit Tests
+To verify all agent score calculations and orchestrator transitions:
 ```bash
 pytest backend/tests/
 ```
+
+---
+
+## 👥 Hackathon Team & Roles
+
+* **Shifa Monam (AI & Machine Learning Integration)**: Responsible for setting up the backend API, integrating the Azure OpenAI (GPT-4o) model, designing prompt templates, setting up search retrieval (RAG), and writing database connection logic.
+* **Muskaan (Frontend Web Development & Design)**: Responsible for building the dashboard interface (HTML/CSS), designing the interactive agent collaboration graph, coding the UI responses for the Tender Copilot chat, and compiling the project presentation slides.
+
+
