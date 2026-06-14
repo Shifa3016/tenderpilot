@@ -115,7 +115,7 @@ pytest backend/tests/
 
 ## 👥 Hackathon Team & Roles
 
-* **Shifa Monam (AI & Machine Learning Integration)**: Responsible for setting up the backend API, integrating the Azure OpenAI (GPT-4o) model, designing prompt templates, setting up search retrieval (RAG), and writing database connection logic.
-* **Muskaan (Frontend Web Development & Design)**: Responsible for building the dashboard interface (HTML/CSS), designing the interactive agent collaboration graph, coding the UI responses for the Tender Copilot chat, and compiling the project presentation slides.
+* **Muskaan (AI & Machine Learning Integration)**: Responsible for setting up the backend API, integrating the Azure OpenAI (GPT-4o) model, designing prompt templates, setting up search retrieval (RAG), and writing database connection logic.
+* **Shifa Monam (Frontend Web Development & Design)**: Responsible for building the dashboard interface (HTML/CSS), designing the interactive agent collaboration graph, coding the UI responses for the Tender Copilot chat, and compiling the project presentation slides.
 
 
